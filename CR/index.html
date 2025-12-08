@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compte Rendu Sprint 5 - Projet AGORA</title>
+    <style>
+        /* --- STYLE GENERAL --- */
+        :root {
+            --primary: #2c3e50;    /* Bleu Nuit */
+            --accent: #2980b9;     /* Bleu Roi */
+            --bg-body: #eceff1;
+            --bg-paper: #ffffff;
+            --text-main: #333;
+            --text-light: #666;
+            --border: #ddd;
+            --code-bg: #f4f6f7;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px 0;
+        }
+
+        /* --- FORMAT A4 --- */
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            background-color: var(--bg-paper);
+            padding: 25mm;
+            box-sizing: border-box;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        /* --- EN-TETE --- */
+        header {
+            border-bottom: 3px solid var(--primary);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 22px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-top: 5px;
+        }
+
+        /* --- ACCES VM (ENCADRÉ) --- */
+        .vm-access {
+            background-color: #e8f4fd;
+            border: 1px solid #b6d4fe;
+            border-left: 5px solid var(--accent);
+            padding: 15px;
+            margin-bottom: 30px;
+            border-radius: 4px;
+            font-size: 0.95em;
+        }
+
+        .vm-access strong { color: var(--accent); }
+
+        /* --- TITRES --- */
+        h2 {
+            color: var(--primary);
+            font-size: 18px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+
+        h3 {
+            color: var(--accent);
+            font-size: 15px;
+            margin-top: 20px;
+            font-weight: 700;
+        }
+
+        /* --- TEXTE & CODE --- */
+        p { text-align: justify; margin-bottom: 10px; font-size: 14px; }
+        
+        ul { padding-left: 20px; font-size: 14px; }
+        li { margin-bottom: 5px; }
+
+        code {
+            background-color: #eee;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Consolas', monospace;
+            color: #c7254e;
+            font-size: 0.9em;
+        }
+
+        pre {
+            background-color: var(--code-bg);
+            border: 1px solid var(--border);
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-size: 12px;
+            border-left: 3px solid #7f8c8d;
+        }
+
+        /* --- IMAGES --- */
+        .screenshot-placeholder {
+            width: 100%;
+            min-height: 150px;
+            background-color: #f0f0f0;
+            border: 2px dashed #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            margin: 15px 0;
+            font-style: italic;
+            border-radius: 5px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .screenshot-placeholder img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            border: 1px solid var(--border);
+            display: block;
+            margin: 0 auto;
+        }
+
+        .img-caption {
+            font-size: 12px;
+            color: #777;
+            text-align: center;
+            display: block;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        /* --- INFO GROUPE --- */
+        .group-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        /* --- IMPRESSION --- */
+        @media print {
+            body { background: none; padding: 0; }
+            .page { box-shadow: none; margin: 0; width: 100%; }
+            .vm-access { background-color: #f0f0f0 !important; -webkit-print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page">
+        <header>
+            <h1>Compte Rendu d'Activité - Sprint 5</h1>
+            <div class="subtitle">Projet AGORA (MJC) - Migration ORM Doctrine & Gestion des Données</div>
+        </header>
+
+        <div class="vm-access">
+            <strong>🚀 ACCÈS À L'ENVIRONNEMENT DE VALIDATION (VM)</strong>
+            <ul style="margin: 5px 0 0 0;">
+                <li><strong>URL du projet :</strong> <a href="#">http://ipDeLaVM/agora/public/</a></li>
+                <li><strong>Login Admin :</strong> <code>admin</code></li>
+                <li><strong>Mot de passe :</strong> <code>admin</code></li>
+            </ul>
+        </div>
+
+        <div class="group-info">
+            <div>
+                <strong>Groupe (Quadrinôme) :</strong><br>
+                • Mucanji Rajdi<br>
+                • Bravo Gabriel<br>
+                • Wagner Anis<br>
+                • sael
+            </div>
+            <div style="text-align: right;">
+                <strong>Date :</strong> 4/12/2025<br>
+                <strong>Classe :</strong> BTS SIO 2 (SLAM)
+            </div>
+        </div>
+
+        <section>
+            <h2>1. Contexte et Composant Doctrine</h2>
+            <p>
+                L'application Agora gère les activités d'une MJC. L'objectif de ce sprint était d'abandonner les requêtes SQL manuelles pour passer à l'ORM <strong>Doctrine</strong>. Ce composant permet de manipuler la base de données via des objets PHP (Entités), ce qui sécurise les échanges et facilite la gestion des relations complexes.
+            </p>
+            <p>
+                Doctrine est un ORM (Object-Relational Mapping) qui fait le pont entre le monde objet (PHP) et le monde relationnel (SQL). Il permet de définir des entités comme des classes PHP avec des attributs (PHP 8) qui décrivent la structure de la base de données. Doctrine génère ensuite automatiquement les requêtes SQL nécessaires.
+            </p>
+            
+            <h3>1.1. Entités créées</h3>
+            <p>
+                Nous avons modélisé le domaine avec les entités suivantes :
+            </p>
+            <ul>
+                <li><strong>Genre</strong> : Gestion des genres de jeux vidéo</li>
+                <li><strong>Tournoi</strong> : Gestion des tournois organisés par la MJC</li>
+                <li><strong>CatTournois</strong> : Catégories de tournois (ex: Compétitif, Amateur)</li>
+                <li><strong>Participant</strong> : Participants aux tournois</li>
+                <li><strong>Marque</strong> : Marques de jeux vidéo</li>
+                <li><strong>JeuVideo</strong> : Catalogue des jeux vidéo</li>
+                <li><strong>Pegi</strong> : Classification PEGI des jeux</li>
+                <li><strong>Plateforme</strong> : Plateformes de jeux (PC, PlayStation, etc.)</li>
+                <li><strong>Membre</strong> : Membres de la MJC (authentification)</li>
+            </ul>
+            
+            <h3>1.2. Migrations Doctrine</h3>
+            <p>
+                Les migrations Doctrine permettent de versionner le schéma de la base de données. Chaque modification d'entité génère une migration via la commande <code>php bin/console make:migration</code>. L'exécution se fait avec <code>php bin/console doctrine:migrations:migrate</code>.
+            </p>
+            <p>
+                Nous avons créé plusieurs migrations pour :
+            </p>
+            <ul>
+                <li>Création des tables de base (Genre, Marque, JeuVideo, etc.)</li>
+                <li>Ajout des relations entre entités (clés étrangères)</li>
+                <li>Création de la table de jointure <code>tournoi_participant</code> pour la relation ManyToMany</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>2. Démarche Projet (Équipe de 4)</h2>
+            <p>
+                Notre équipe de 4 développeurs a travaillé en méthode Agile Scrum. Nous avons utilisé <strong>Trello</strong> pour suivre l'avancement des tickets (Backlog, In Progress, Done). La répartition des tâches s'est faite par fonctionnalités :
+            </p>
+            
+            <div class="screenshot-placeholder"><img src="trello.png" alt="Tableau Trello de gestion de projet"></div>
+            <span class="img-caption">Figure : Tableau Trello de gestion de projet</span>
+            
+            <ul>
+                <li>Mise en place de l'environnement et des entités de base (Genre, Marque).</li>
+                <li>Développement des relations complexes (Tournois/Participants).</li>
+                <li>Création du Dashboard statistique.</li>
+            </ul>
+            <p>
+                Pour la collaboration technique, nous avons utilisé <strong>Git</strong>. Chaque fonctionnalité a été développée sur une branche dédiée avant d'être fusionnée, ce qui nous a permis de résoudre les conflits sur les fichiers de migration Doctrine.
+            </p>
+            
+            <div class="screenshot-placeholder"><img src="github.png" alt="Gestion des branches Git sur GitHub"></div>
+            <span class="img-caption">Figure : Gestion des branches Git sur GitHub</span>
+        </section>
+
+        <section>
+            <h2>3. Réalisation des Missions</h2>
+
+            <h3>Mission 1 : Mise en place de l'ORM et CRUD (Genre)</h3>
+            <p>
+                Nous avons configuré la connexion BDD dans le fichier <code>.env</code> avec la variable <code>DATABASE_URL</code>. Ensuite, nous avons créé l'entité <code>Genre</code> via la commande <code>php bin/console make:entity Genre</code>. Cette commande interactive nous a permis de définir les propriétés : <code>id</code> (auto-généré), <code>libGenre</code> (string).
+            </p>
+            <p>
+                L'entité <code>Genre</code> a été générée avec les attributs Doctrine :
+            </p>
+<pre>
+#[ORM\Entity(repositoryClass: GenreRepository::class)]
+class Genre
+{
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $libGenre = null;
+    
+    // Relation OneToMany avec JeuVideo
+    #[ORM\OneToMany(targetEntity: JeuVideo::class, mappedBy: 'genre')]
+    private Collection $jeuVideos;
+}
+</pre>
+            <p>
+                Nous avons ensuite généré le CRUD (Create, Read, Update, Delete) automatiquement avec <code>php bin/console make:crud Genre</code>. Cette commande a créé :
+            </p>
+            <ul>
+                <li>Le contrôleur <code>GenreController</code> avec les actions index, new, show, edit, delete</li>
+                <li>Le formulaire <code>GenreType</code> pour la création/édition</li>
+                <li>Les vues Twig (index, new, show, edit) que nous avons adaptées à la charte graphique</li>
+            </ul>
+            <p>
+                Enfin, nous avons généré et exécuté la migration avec <code>php bin/console make:migration</code> puis <code>php bin/console doctrine:migrations:migrate</code> pour créer la table <code>genre</code> dans la base de données.
+            </p>
+            
+            <div class="screenshot-placeholder"><img src="liste_genre.png" alt="Interface de gestion des Genres générée par le CRUD"></div>
+            <span class="img-caption">Figure 1 : Interface de gestion des Genres générée par le CRUD</span>
+
+            <hr style="border: 0; border-top: 1px dashed #ccc; margin: 20px 0;">
+
+            <h3>Mission 2 : Gestion des Tournois (Relation Many-To-One)</h3>
+            <p>
+                Nous avons créé l'entité <code>Tournoi</code> avec les propriétés : <code>libelle</code>, <code>date</code>, <code>dateCreation</code>. Cette entité est liée à <code>CatTournois</code> par une relation <strong>ManyToOne</strong> : un tournoi appartient à une catégorie, mais une catégorie peut contenir plusieurs tournois.
+            </p>
+            <p>
+                La relation est définie dans l'entité <code>Tournoi</code> :
+            </p>
+<pre>
+// src/Entity/Tournoi.php
+#[ORM\ManyToOne(inversedBy: 'tournois')]
+private ?CatTournois $categorie = null;
+</pre>
+            <p>
+                Et la relation inverse dans <code>CatTournois</code> :
+            </p>
+<pre>
+// src/Entity/CatTournois.php
+#[ORM\OneToMany(targetEntity: Tournoi::class, mappedBy: 'categorie')]
+private Collection $tournois;
+</pre>
+            <p>
+                <strong>Problème rencontré :</strong> Lors de l'affichage du formulaire avec un champ <code>EntityType</code> pour sélectionner la catégorie, nous avons rencontré l'erreur <em>"Object could not be converted to string"</em>.
+            </p>
+            <p>
+                <strong>Solution :</strong> Nous avons ajouté la méthode magique <code>__toString()</code> dans l'entité <code>CatTournois</code> pour que Symfony puisse afficher le libellé dans la liste déroulante :
+            </p>
+<pre>
+// src/Entity/CatTournois.php
+public function __toString(): string {
+    return $this->libelle;
+}
+</pre>
+            <p>
+                Nous avons aussi dû accorder les droits <code>REFERENCES</code> à l'utilisateur SQL pour permettre la création de clés étrangères :
+            </p>
+<pre>
+GRANT REFERENCES ON agora.* TO 'user'@'localhost';
+</pre>
+            
+            <div class="screenshot-placeholder"><img src="liste_tournoi.png" alt="Formulaire de création de tournoi avec sélection de catégorie"></div>
+            <span class="img-caption">Figure 2 : Formulaire de création de tournoi avec sélection de catégorie</span>
+
+            <hr style="border: 0; border-top: 1px dashed #ccc; margin: 20px 0;">
+
+            <h3>Mission 3 : Gestion des Participants (Relation Many-To-Many)</h3>
+            <p>
+                Pour gérer les inscriptions, nous avons établi une relation <strong>ManyToMany</strong> entre <code>Tournoi</code> et <code>Participant</code>. Un participant peut s'inscrire à plusieurs tournois, et un tournoi peut avoir plusieurs participants. Doctrine génère automatiquement une table de jointure <code>tournoi_participant</code> lors de la migration.
+            </p>
+            <p>
+                La relation est définie dans l'entité <code>Tournoi</code> :
+            </p>
+<pre>
+// src/Entity/Tournoi.php
+#[ORM\ManyToMany(targetEntity: Participant::class, inversedBy: 'tournois')]
+private Collection $participants;
+</pre>
+            <p>
+                Et la relation inverse dans <code>Participant</code> :
+            </p>
+<pre>
+// src/Entity/Participant.php
+#[ORM\ManyToMany(targetEntity: Tournoi::class, mappedBy: 'participants')]
+private Collection $tournois;
+</pre>
+            <p>
+                Dans le formulaire <code>TournoiType.php</code>, nous avons configuré le champ <code>EntityType</code> avec l'option <code>'multiple' => true</code> pour permettre la sélection multiple de participants :
+            </p>
+<pre>
+// src/Form/TournoiType.php
+$builder->add('participants', EntityType::class, [
+    'class' => Participant::class,
+    'choice_label' => function(Participant $participant) {
+        return $participant->getPrenom() . ' ' . $participant->getNom();
+    },
+    'multiple' => true,  // Active la sélection multiple pour ManyToMany
+    'expanded' => false, // Liste déroulante (true = checkboxes)
+    'required' => false,
+]);
+</pre>
+            <p>
+                Lors de la sauvegarde, Doctrine gère automatiquement les insertions/suppressions dans la table de jointure <code>tournoi_participant</code>.
+            </p>
+            
+            <div class="screenshot-placeholder"><img src="liste_participant.png" alt="Formulaire de création de tournoi avec sélection multiple de participants"></div>
+            <span class="img-caption">Figure 3 : Formulaire de création de tournoi avec sélection multiple de participants</span>
+
+            <hr style="border: 0; border-top: 1px dashed #ccc; margin: 20px 0;">
+
+            <h3>Mission 4 : Dashboard et Statistiques (QueryBuilder)</h3>
+            <p>
+                Pour le tableau de bord, nous avons utilisé le <strong>QueryBuilder</strong> de Doctrine. Contrairement au SQL brut, le QueryBuilder permet d'écrire des requêtes orientées objet dynamiques et sécurisées (protection contre les injections SQL via les paramètres).
+            </p>
+            <p>
+                Nous avons créé une méthode personnalisée dans le repository <code>TournoiRepository</code> pour filtrer les tournois après une date donnée :
+            </p>
+<pre>
+// src/Repository/TournoiRepository.php
+public function findAllAfterThanDateQB($datemax): array
+{
+    $qb = $this->createQueryBuilder('t');
+    
+    $qb->leftJoin('t.categorie', 'c')
+       ->addSelect('c')  // Évite le problème N+1
+       ->where($qb->expr()->gt('t.date', ':datemax'))
+       ->setParameter('datemax', $datemax)
+       ->orderBy('t.date', 'ASC');
+    
+    return $qb->getQuery()->getResult();
+}
+</pre>
+            <p>
+                Cette méthode utilise le QueryBuilder pour :
+            </p>
+            <ul>
+                <li>Faire une jointure avec la catégorie (<code>leftJoin</code>)</li>
+                <li>Éviter le problème N+1 en sélectionnant la catégorie (<code>addSelect</code>)</li>
+                <li>Filtrer les tournois après une date (<code>where</code> avec paramètre sécurisé)</li>
+                <li>Trier par date croissante (<code>orderBy</code>)</li>
+            </ul>
+            <p>
+                Dans le contrôleur, nous utilisons cette méthode pour afficher les statistiques :
+            </p>
+<pre>
+// src/Controller/TournoisQBStatController.php
+$datemax = $request->query->get('datemax', '2025-01-01');
+$tournois = $tournoiRepository->findAllAfterThanDateQB($datemax);
+
+// Transformation en tableau pour la vue
+$stats = [];
+foreach ($tournois as $t) {
+    $stats[] = [
+        'libelle' => $t->getLibelle(),
+        'categorie' => $t->getCategorie() ? $t->getCategorie()->getLibelle() : '(Aucune)',
+        'date' => $t->getDate()->format('d/m/Y H:i'),
+        'nbParticipants' => $t->getParticipants()->count(),
+    ];
+}
+</pre>
+            <p>
+                Enfin, nous avons intégré la librairie <strong>Chart.js</strong> pour visualiser graphiquement le nombre de participants par tournoi. Les données sont passées depuis le contrôleur vers la vue Twig qui génère le graphique JavaScript.
+            </p>
+            
+            <div class="screenshot-placeholder"><img src="chart.png" alt="Dashboard avec statistiques et graphique Chart.js"></div>
+            <span class="img-caption">Figure 4 : Dashboard avec statistiques et graphique Chart.js</span>
+        </section>
+
+        <section>
+            <h2>4. Bilan et Difficultés Rencontrées</h2>
+            
+            <h3>4.1. Points Positifs</h3>
+            <ul>
+                <li>Doctrine simplifie grandement la gestion des relations complexes (ManyToOne, ManyToMany)</li>
+                <li>Les migrations permettent de versionner le schéma de la base de données</li>
+                <li>Le QueryBuilder offre une sécurité accrue contre les injections SQL</li>
+                <li>La génération automatique de CRUD accélère le développement</li>
+            </ul>
+            
+            <h3>4.2. Difficultés et Solutions</h3>
+            <ul>
+                <li><strong>Erreur "Object could not be converted to string"</strong> : Résolu en ajoutant <code>__toString()</code> dans les entités</li>
+                <li><strong>Droits SQL insuffisants</strong> : Ajout des droits <code>REFERENCES</code> pour les clés étrangères</li>
+                <li><strong>Problème N+1</strong> : Résolu en utilisant <code>addSelect()</code> dans les jointures</li>
+                <li><strong>Conflits de migrations</strong> : Gérés via Git avec des branches dédiées</li>
+            </ul>
+            
+            <h3>4.3. Technologies Utilisées</h3>
+            <ul>
+                <li><strong>Symfony 6/7</strong> : Framework PHP</li>
+                <li><strong>Doctrine ORM</strong> : Gestion de la persistance</li>
+                <li><strong>Twig</strong> : Moteur de templates</li>
+                <li><strong>Chart.js</strong> : Visualisation graphique</li>
+                <li><strong>MySQL/MariaDB</strong> : Base de données</li>
+            </ul>
+        </section>
+
+    </div>
+
+</body>
+</html>

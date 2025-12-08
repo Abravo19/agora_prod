@@ -9,10 +9,10 @@
         "php": ">=8.2",
         "ext-ctype": "*",
         "ext-iconv": "*",
-        "doctrine/dbal": "^3.10.3",
+        "doctrine/dbal": "^3.10.4",
         "doctrine/doctrine-bundle": "^2.18.1",
         "doctrine/doctrine-migrations-bundle": "^3.7",
-        "doctrine/orm": "^3.5.7",
+        "doctrine/orm": "^3.5.8",
         "symfony/console": "7.3.*",
         "symfony/dotenv": "7.3.*",
         "symfony/flex": "^2.10",
@@ -25,7 +25,7 @@
         "symfony/validator": "7.3.*",
         "symfony/yaml": "7.3.*",
         "twig/extra-bundle": "^2.12|^3.22.1",
-        "twig/twig": "^3.22"
+        "twig/twig": "^3.22.1"
     },
     "config": {
         "allow-plugins": {
@@ -78,9 +78,9 @@
         }
     },
     "require-dev": {
-        "doctrine/doctrine-fixtures-bundle": "^4.3",
-        "fakerphp/faker": "^1.24",
-        "symfony/maker-bundle": "^1.64",
+        "doctrine/doctrine-fixtures-bundle": "^4.3.1",
+        "fakerphp/faker": "^1.24.1",
+        "symfony/maker-bundle": "^1.65.1",
         "symfony/web-profiler-bundle": "7.3.*"
     }
 }
