@@ -71,10 +71,12 @@
                     {# Gestion de l'affichage selon l'état de connexion #}
                     {% if app.user %}
                         {# Utilisateur connecté - Version Symfony Security #}
-                        <a href="" class="userAgo">
-                            {{ app.user.prenomMembre }} 
-                            {{ app.user.nomMembre }}
-                        </a>
+                        <li>
+                            <a href="" class="userAgo">
+                                {{ app.user.prenomMembre }} 
+                                {{ app.user.nomMembre }}
+                            </a>
+                        </li>
                         <li>
                             <a class="logout" href="{{ path('app_logout') }}">
                                 Se déconnecter
@@ -82,10 +84,12 @@
                         </li>
                     {% elseif app is defined and app.session is defined and app.session.has('idUtilisateur') %}
                         {# Utilisateur connecté - Version Symfony Session #}
-                        <a href="" class="userAgo">
-                            {{ app.session.get('prenomUtilisateur') }} 
-                            {{ app.session.get('nomUtilisateur') }}
-                        </a>
+                        <li>
+                            <a href="" class="userAgo">
+                                {{ app.session.get('prenomUtilisateur') }} 
+                                {{ app.session.get('nomUtilisateur') }}
+                            </a>
+                        </li>
                         <li>
                             <a class="logout" href="{{ path('app_logout') }}">
                                 Se déconnecter
@@ -93,10 +97,12 @@
                         </li>
                     {% elseif session is defined and session.idUtilisateur is defined %}
                         {# Utilisateur connecté - Version classique #}
-                        <a href="" class="userAgo">
-                            {{ session.prenomUtilisateur }} 
-                            {{ session.nomUtilisateur }}
-                        </a>
+                        <li>
+                            <a href="" class="userAgo">
+                                {{ session.prenomUtilisateur }} 
+                                {{ session.nomUtilisateur }}
+                            </a>
+                        </li>
                         <li>
                             <a class="logout" href="index.php?uc=deconnexion">
                                 Se déconnecter

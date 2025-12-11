@@ -20,8 +20,8 @@
 
             {# Message de bienvenue personnalisé #}
             <div id="blocImageTexte">
-                Bonjour {% if app.user %}{{ app.user.prenomMembre }} {{ app.user.nomMembre }}{% elseif app.session.get('prenomUtilisateur') %}{{ app.session.get('prenomUtilisateur') }} {{ app.session.get('nomUtilisateur') }}{% else %}Utilisateur{% endif %}
+                Bonjour {% if app.user %}<span class="text-primary">{{ app.user.prenomMembre }} {{ app.user.nomMembre }}</span>{% elseif app.session.get('prenomUtilisateur') %}<span class="text-primary">{{ app.session.get('prenomUtilisateur') }} {{ app.session.get('nomUtilisateur') }}</span>{% else %}<span class="text-primary">Utilisateur</span>{% endif %}
+            </div>
             </div>
         </div>
-    </div>
-{% endblock %}
+    {% endblock %}

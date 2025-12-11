@@ -1,47 +1,42 @@
 services:
-    # --- Le Serveur Web (Apache + PHP) ---
-    www:
-        build:
-            context: .
-            dockerfile: Dockerfile
-        ports:
-            - "80:80"
-        volumes:
-            - .:/var/www/html
-        depends_on:
-            - db
+  php:
+    build:
+      context: ./docker/php
+      dockerfile: Dockerfile
+    container_name: symfony-apache
+    ports:
+      - "8082:80"
+    volumes:
+      - ./:/var/www/html
+    working_dir: /var/www/html
+    depends_on:
+      - db
 
-    # --- La Base de Données (MariaDB) ---
-    db:
-        image: mysql:8.0
-        environment:
-            MYSQL_ROOT_PASSWORD: root
-            MYSQL_DATABASE: agora
-            MYSQL_USER: app
-            MYSQL_PASSWORD: app
-        volumes:
-            - db_data:/var/lib/mysql
-        ports:
-            - "3306:3306"
+  db:
+    image: mysql:8.0
+    container_name: mysql_8
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      # Aligne avec DATABASE_URL défini dans .env (utilisateur app / base agoraorm)
+      MYSQL_DATABASE: agoraorm
+      MYSQL_USER: app
+      MYSQL_PASSWORD: app
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
 
-    # --- L'interface SQL (PhpMyAdmin) ---
-    pma:
-        image: phpmyadmin/phpmyadmin
-        ports:
-            - "8080:80"
-        environment:
-            PMA_HOST: db
-            PMA_PORT: 3306
-            UPLOAD_LIMIT: 300M
-        depends_on:
-            - db
-        networks:
-            - default
-        restart: unless-stopped
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: rootpassword
+    ports:
+      - "8081:80"
+    depends_on:
+      - db
 
 volumes:
-    db_data:
-
-networks:
-    default:
-        driver: bridge
+  db_data:
