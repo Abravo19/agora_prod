@@ -104,10 +104,10 @@
                             </a>
                         </li>
                         <li>
-                            <a class="logout" href="index.php?uc=deconnexion">
+                            <a class="logout" href="{{ path('app_logout') }}">
                                 Se déconnecter
                             </a>
-                        </li>
+                        </li>   
                     {% else %}
                         {# Utilisateur non connecté #}
                         <li>

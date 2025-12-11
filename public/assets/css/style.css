@@ -232,11 +232,19 @@ ul.top-menu > li > .logout {
 	font-size: 12px;
 	border-radius: 4px;
 	-webkit-border-radius: 4px;
-	border: 1px solid var(--warning) !important;
+	border: 1px solid var(--important) !important;
 	padding: 5px 15px;
 	margin-right: 15px;
-	background: var(--warning);
+	background: var(--important);
 	margin-top: 15px;
+}
+
+ul.top-menu > li > .logout:hover {
+	color: #ffffff !important;
+	background: #ff5252 !important;
+	border-color: #ff5252 !important;
+	opacity: 0.9;
+	transition: all 0.3s ease;
 }
 
 
@@ -657,12 +665,7 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 }
 
 .full-width .dropdown-menu.extended.logout > li > a:hover {
-    background: none !important;
     color: var(--primary) !important;
-}
-
-.dropdown-menu.extended.logout > li > a:hover {
-    background: none !important;
 }
 
 .dropdown-menu.extended.logout > li > a:hover i {

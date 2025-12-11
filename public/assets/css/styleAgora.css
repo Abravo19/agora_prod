@@ -15,6 +15,7 @@
     --warm: #fd79a8;         /* Rose vif */
     --success: #00b894;      /* Vert menthe */
     --warning: #fdcb6e;      /* Jaune soleil */
+    --important: #ff6c60;    /* Rouge vif */
 }
 
 body {
@@ -220,26 +221,73 @@ a.userAgo {
     width: 100%;
     text-align: center;
     overflow: hidden;
-    border-radius: 12px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4); /* Ombre plus moderne */
+    margin-bottom: 30px;
+}
+
+/* Overlay sombre pour améliorer la lisibilité du texte */
+#blocImage::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.6));
+    z-index: 1;
+    transition: background 0.3s ease;
+}
+
+#blocImage:hover::before {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+}
+
+#blocImage img.responsive {
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+#blocImage:hover img.responsive {
+    transform: scale(1.03);
 }
 
 #blocImageTexte {
-    width: 100%;
+    width: 90%;
     position: absolute;
-    top: 30%;
+    top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); /* Centrage vertical et horizontal */
-    text-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transform: translate(-50%, -50%); /* Centrage parfait */
+    text-shadow: 0 4px 20px rgba(0,0,0,0.6);
     text-align: center;
     font-family: 'Poppins', sans-serif;
     font-size: 3.5em;
     font-weight: 800;
     color: white;
     z-index: 10;
+    animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -40%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* Media query pour le mobile */
+@media (max-width: 768px) {
+    #blocImageTexte {
+        font-size: 1.8em;
+    }
 }
 
 .responsive {
-    width: 100%;
-    height: auto;
-    display: block;
+    /* La classe est gérée via le sélecteur #blocImage img.responsive plus haut */
 }

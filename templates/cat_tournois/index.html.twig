@@ -24,10 +24,10 @@
                 <td>
                 {% if cat_tournoi.tournois is not empty %}
                     {% for tournoi in cat_tournoi.tournois %}
-                        <span class="badge bg-info text-dark">{{ tournoi.libelle }}</span>
+                        <span class="badge bg-primary">{{ tournoi.libelle }}</span>
                     {% endfor %}
                 {% else %}
-                    <span class="badge bg-warning text-dark">Aucun tournoi</span>
+                    <span class="badge bg-important text-dark">Aucun tournoi</span>
                 {% endif %}
                 </td>
                 <td>
