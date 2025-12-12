@@ -72,7 +72,7 @@
                     {% if app.user %}
                         {# Utilisateur connecté - Version Symfony Security #}
                         <li>
-                            <a href="" class="userAgo">
+                            <a href="{{ path('admin') }}" class="userAgo">
                                 {{ app.user.prenomMembre }} 
                                 {{ app.user.nomMembre }}
                             </a>
@@ -85,7 +85,7 @@
                     {% elseif app is defined and app.session is defined and app.session.has('idUtilisateur') %}
                         {# Utilisateur connecté - Version Symfony Session #}
                         <li>
-                            <a href="" class="userAgo">
+                            <a href="{{ path('admin') }}" class="userAgo">
                                 {{ app.session.get('prenomUtilisateur') }} 
                                 {{ app.session.get('nomUtilisateur') }}
                             </a>
@@ -98,7 +98,7 @@
                     {% elseif session is defined and session.idUtilisateur is defined %}
                         {# Utilisateur connecté - Version classique #}
                         <li>
-                            <a href="" class="userAgo">
+                            <a href="{{ path('admin') }}" class="userAgo">
                                 {{ session.prenomUtilisateur }} 
                                 {{ session.nomUtilisateur }}
                             </a>

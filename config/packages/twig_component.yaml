@@ -1,11 +1,3 @@
-twig:
-    file_name_pattern: '*.twig'
-
-when@test:
-    twig:
-        strict_variables: true
-
-# config/packages/twig_component.yaml
 twig_component:
     anonymous_template_directory: 'components/'
     defaults:
