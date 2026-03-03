@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<!-- page start-->
+<div class="col-sm-8">
+    <section class="panel">
+        <div class="chat-room-head">
+            <h3><i class="fa fa-angle-right"></i> Créer un membre</h3>
+        </div>
+        <div class="panel-body">
+
+    {{ include('membre/_form.html.twig') }}
+
+    <a href="{{ path('app_membre_index') }}"><button class="btn btn-primary btn-xs"><i class="fa fa-share"></i> Retour</button></a>
+    </div>
+    </section>
+</div>
+{% endblock %}

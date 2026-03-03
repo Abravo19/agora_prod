@@ -23,6 +23,20 @@ class MembreFixtures extends Fixture
     }
     public function load(ObjectManager $manager): void
     {
+        // Utilisateur de test fixe pour la connexion
+        $admin = new Membre();
+        $admin->setUsername('admin');
+        $admin->setNomMembre('Admin');
+        $admin->setPrenomMembre('Test');
+        $admin->setMailMembre('admin@agora.local');
+        $admin->setTelMembre('0600000000');
+        $admin->setRueMembre('1 rue Test');
+        $admin->setCpMembre('75000');
+        $admin->setVilleMembre('Paris');
+        $admin->setPassword($this->passwordHasher->hashPassword($admin, 'admin'));
+        $admin->setRoles(['ROLE_USER', 'ROLE_ADMIN']);
+        $manager->persist($admin);
+
         for ($i = 0; $i < 10; $i++) {
             $membre = new Membre();
             $membre->setUsername($this->faker->userName());

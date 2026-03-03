@@ -144,6 +144,29 @@ header .logo span {
     background-color: rgba(108, 92, 231, 0.05) !important;
 }
 
+/* Ligne du compte connecté */
+.table tbody tr.table-current-user {
+    background-color: rgba(0, 206, 201, 0.15) !important;
+    border-left: 4px solid var(--accent);
+}
+
+.table tbody tr.table-current-user:hover {
+    background-color: rgba(0, 206, 201, 0.25) !important;
+}
+
+.badge-current-user {
+    background: var(--accent) !important;
+    color: #fff !important;
+    margin-left: 6px;
+}
+
+/* Table responsive - défilement horizontal sur petits écrans */
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 1rem;
+}
+
 /* Badges colorés */
 .badge {
     padding: 6px 10px;

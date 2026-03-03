@@ -126,22 +126,19 @@
                 </ul>
             </li>
 
-            {# Section Membres #}
+            {# Section Membres - réservée aux administrateurs #}
+            {% if is_granted('ROLE_ADMIN') %}
             <li class="sub-menu">
                 <a {% if menuActif is defined and menuActif == 'Membres' %}class="active"{% endif %}
                    href="javascript:;">
                     <i class="fa fa-user-md"></i>
                     <span>Membres</span>
                 </a>
-                {# Sous-menu des membres - À implémenter #}
                 <ul class="sub">
-                    <li><a href="index.php">sous-menu 1</a></li>
-                    <li><a href="index.php">sous-menu 2</a></li>
-                    <li><a href="index.php">sous-menu 3</a></li>
-                    <li><a href="index.php">sous-menu 4</a></li>
-                    <li><a href="index.php">sous-menu 5</a></li>
+                    <li><a href="{{ path('app_membre_index') }}">Gérer les membres</a></li>
                 </ul>
             </li>
+            {% endif %}
 
             {# Section Intervenants #}
             <li class="sub-menu">

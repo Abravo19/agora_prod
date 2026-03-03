@@ -18,10 +18,45 @@
                  alt="Agora grecque antique" 
                  class="responsive">
 
-            {# Message de bienvenue personnalisé #}
+            {# Message de bienvenue personnalisé avec effet typing sur le nom #}
             <div id="blocImageTexte">
-                Bonjour {% if app.user %}<span class="text-primary">{{ app.user.prenomMembre }} {{ app.user.nomMembre }}</span>{% elseif app.session.get('prenomUtilisateur') %}<span class="text-primary">{{ app.session.get('prenomUtilisateur') }} {{ app.session.get('nomUtilisateur') }}</span>{% else %}<span class="text-primary">Utilisateur</span>{% endif %}
+                Bonjour <span id="typing-name" class="text-primary">{% if app.user %}{{ app.user.prenomMembre }} {{ app.user.nomMembre }}{% elseif app.session.get('prenomUtilisateur') %}{{ app.session.get('prenomUtilisateur') }} {{ app.session.get('nomUtilisateur') }}{% else %}Utilisateur{% endif %}</span><span class="typing-cursor">|</span>
             </div>
             </div>
         </div>
+
+    {# Effet typing sur le nom de l'utilisateur #}
+    <script>
+    (function() {
+        const el = document.getElementById('typing-name');
+        if (!el) return;
+        const text = el.textContent.trim();
+        if (!text) return;
+        el.textContent = '';
+        let i = 0;
+        const speed = 80;
+        const cursor = document.querySelector('.typing-cursor');
+        function type() {
+            if (i < text.length) {
+                el.textContent += text.charAt(i);
+                i++;
+                setTimeout(type, speed);
+            } else if (cursor) {
+                cursor.style.opacity = '0';
+            }
+        }
+        setTimeout(type, 400);
+    })();
+    </script>
+    <style>
+        .typing-cursor {
+            animation: blink 0.7s step-end infinite;
+            margin-left: 2px;
+            color: pink;
+            font-size: 100000px;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+    </style>
     {% endblock %}

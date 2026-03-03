@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<!-- page start-->
+<div class="col-sm-8">
+    <section class="panel">
+        <div class="chat-room-head">
+            <h3><i class="fa fa-angle-right"></i> Détail du membre</h3>
+        </div>
+        <div class="panel-body">
+    <table class="table table-striped table-advance table-hover">
+        <tbody>
+            <tr>
+                <th class="tableau-entete"><i class="fa fa-bullhorn"></i> Id</th>
+                <td>{{ membre.id }}</td>
+            </tr>
+            <tr>
+                <th class="tableau-entete"><i class="fa fa-user"></i> Identifiant</th>
+                <td>{{ membre.username }}</td>
+            </tr>
+            <tr>
+                <th class="tableau-entete"><i class="fa fa-bookmark"></i> Nom</th>
+                <td>{{ membre.nomMembre }}</td>
+            </tr>
+            <tr>
+                <th class="tableau-entete"><i class="fa fa-bookmark"></i> Prénom</th>
+                <td>{{ membre.prenomMembre }}</td>
+            </tr>
+            <tr>
+                <th class="tableau-entete"><i class="fa fa-envelope"></i> Email</th>
+                <td>{{ membre.mailMembre }}</td>
+            </tr>
+            <tr>
+                <th class="tableau-entete"><i class="fa fa-phone"></i> Téléphone</th>
+                <td>{{ membre.telMembre ?? '-' }}</td>
+            </tr>
+            <tr>
+                <th class="tableau-entete"><i class="fa fa-map-marker"></i> Adresse</th>
+                <td>{{ membre.rueMembre }}, {{ membre.cpMembre }} {{ membre.villeMembre }}</td>
+            </tr>
+            <tr>
+                <th class="tableau-entete"><i class="fa fa-shield"></i> Rôles</th>
+                <td>
+                    {% for role in membre.roles %}
+                        <span class="badge bg-info text-dark">{{ role }}</span>
+                    {% else %}
+                        -
+                    {% endfor %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_membre_index') }}"><button class="btn btn-primary btn-xs"><i class="fa fa-share"></i> Retour</button></a>
+    <a href="{{ path('app_membre_edit', {'id': membre.id}) }}"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i> Modifier</button></a>
+    {{ include('membre/_delete_form.html.twig') }}
+    </div>
+    </section>
+</div>
+{% endblock %}
