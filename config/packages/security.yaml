@@ -42,8 +42,9 @@ security:
     access_control:
         # Un utilisateur anonyme a uniquement accès à la page de connexion (route /login)
         - { path: ^/login, roles: PUBLIC_ACCESS }
-        # Un administrateur a accès à la gestion des membres
+        # Un administrateur a accès à la gestion des membres et des traces
         - { path: ^/membres, roles: ROLE_ADMIN }
+        - { path: ^/login_trace, roles: ROLE_ADMIN }
         # Un utilisateur authentifié (ROLE_USER ou ROLE_ADMIN) a accès au reste
         - { path: ^/, roles: [ROLE_ADMIN, ROLE_USER] }
 

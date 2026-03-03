@@ -85,10 +85,10 @@
                         <a href="{{ path('app_stat_dql_tournoi') }}">Dashboard tournois (DQL)</a>
                     </li>
                     <li>
-                        <a href="{{ path('app_stat_qb_tournoi') }}">Dashboard tournois (Query Builder)</a>
+                        <a href="{{ path('app_stat_qb_tournoi') }}">Dashboard tournois (QB)</a>
                     </li>
                     <li>
-                        <a href="{{ path('app_stat_tournoi_index') }}">Statistiques tournois</a>
+                        <a href="{{ path('app_stat_tournoi_index') }}">Dashboard tournois chart.js</a>
                     </li>
                 </ul>
             </li>
@@ -129,13 +129,14 @@
             {# Section Membres - réservée aux administrateurs #}
             {% if is_granted('ROLE_ADMIN') %}
             <li class="sub-menu">
-                <a {% if menuActif is defined and menuActif == 'Membres' %}class="active"{% endif %}
+                <a {% if menuActif is defined and (menuActif == 'Membres' or menuActif == 'Traces') %}class="active"{% endif %}
                    href="javascript:;">
-                    <i class="fa fa-user-md"></i>
+                    <i class="fa fa-user"></i>
                     <span>Membres</span>
                 </a>
                 <ul class="sub">
-                    <li><a href="{{ path('app_membre_index') }}">Gérer les membres</a></li>
+                    <li><a href="{{ path('app_membre_index') }}">Membres</a></li>
+                    <li><a href="{{ path('app_login_trace_index') }}">Historique des connexions</a></li>
                 </ul>
             </li>
             {% endif %}

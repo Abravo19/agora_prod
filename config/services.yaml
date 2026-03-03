@@ -20,6 +20,11 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
 
+    App\Security\LoginFormAuthenticator:
+        arguments:
+            $urlGenerator: '@router'
+            $entityManager: '@doctrine.orm.entity_manager'
+
     # Extension Twig personnalisée pour la fonction asset
     App\Twig\AppExtension:
         tags: ['twig.extension']

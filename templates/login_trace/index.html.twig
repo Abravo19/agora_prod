@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<!-- page start-->
+<div class="row">
+    <div class="col-12">
+        <section class="panel">
+            <div class="chat-room-head">
+                <h3><i class="fa fa-angle-right"></i> Gérer les traces de connexion</h3>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-advance table-hover">
+                        <thead>
+                            <tr class="tableau-entete">
+                                <th><i class="fa fa-bullhorn"></i> Id</th>
+                                <th><i class="fa fa-user"></i> Identifiant</th>
+                                <th><i class="fa fa-globe"></i> Adresse IP</th>
+                                <th><i class="fa fa-check"></i> Succès</th>
+                                <th><i class="fa fa-calendar"></i> Date</th>
+                                <th><i class="fa fa-exclamation-triangle"></i> Message d'erreur</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for login_trace in login_traces %}
+                            <tr>
+                                <td>{{ login_trace.id }}</td>
+                                <td>{{ login_trace.username }}</td>
+                                <td>{{ login_trace.ipAddress }}</td>
+                                <td>{{ login_trace.success ? 'Oui' : 'Non' }}</td>
+                                <td>{{ login_trace.loggedAt ? login_trace.loggedAt|date('d/m/Y H:i:s') : '' }}</td>
+                                <td>{{ login_trace.message ?? '-' }}</td>
+                            </tr>
+                            {% else %}
+                            <tr>
+                                <td colspan="6">Aucune trace enregistrée en base de données</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock %}
