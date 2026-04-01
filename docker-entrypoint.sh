@@ -1,11 +1,11 @@
 #!/bin/bash
 set -e
 
-# Ejecutar migraciones automáticamente al arrancar
-php bin/console doctrine:migrations:migrate --no-interaction
+# Ejecutar migraciones (si falla, solo avisa pero no detiene el arranque)
+php bin/console doctrine:migrations:migrate --no-interaction || echo "⚠️ Migraciones fallaron, continuando..."
 
-# Limpiar y calentar caché
-php bin/console cache:clear --env=prod
+# Limpiar caché
+php bin/console cache:clear --env=prod || echo "⚠️ Cache clear falló, continuando..."
 
-# Iniciar Apache
+# Iniciar Apache siempre
 apache2-foreground
