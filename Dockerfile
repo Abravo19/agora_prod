@@ -30,7 +30,7 @@ WORKDIR /var/www/html
 COPY . .
 
 # Instalar dependencias de Composer (sin dev)
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install --optimize-autoloader
 
 # Permisos para Symfony
 RUN chown -R www-data:www-data var/ || true
